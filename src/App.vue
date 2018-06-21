@@ -2,17 +2,10 @@
 <v-app>
   <v-navigation-drawer app></v-navigation-drawer>
   <Nav />
-
-  
   <v-content>
     <v-container fluid>
-
-   
-        <Nav />
         <Graph />    
-        <Skills />
-  
-
+        <Tools />
   </v-container>
   </v-content>
   <v-footer app></v-footer>
@@ -23,14 +16,14 @@
 <script>
 import Nav from "./components/Nav.vue";
 import Graph from "./components/Graph.vue";
-import Skills from "./components/Skills.vue";
+import Tools from "./components/Tools.vue";
 
 export default {
   name: "app",
   components: {
     Nav,
     Graph,
-    Skills
+    Tools
   }
 };
 </script>
