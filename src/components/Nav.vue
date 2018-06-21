@@ -1,16 +1,14 @@
 <template>
-<div id="goals">
-  <p>{{ message }}</p>
-</div>
+<v-toolbar app>{{message}}</v-toolbar>
 </template>
 
 <script>
 
 export default {
-    name: "goals",
+    name: "nav",
     data() {
         return {
-            message: "Those are goals"
+            message: "This will will be the Navigation"
         }
     }
 }

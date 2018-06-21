@@ -1,35 +1,34 @@
 <template>
-<!DOCTYPE html>
-<html>
+<v-app>
+  <v-navigation-drawer app></v-navigation-drawer>
+  <Nav />
 
-<head>
-  <meta charset="utf-8">
-  <title>This is the title</title>
-  <meta name="author" content="">
-  <meta name="description" content="">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-</head>
+  
+  <v-content>
+    <v-container fluid>
 
-<body>
-  <div id="app">
-    <Goals />
-    <Graph />    
-    <Skills />
-  </div>
-</body>
+   
+        <Nav />
+        <Graph />    
+        <Skills />
+  
 
-</html>
+  </v-container>
+  </v-content>
+  <v-footer app></v-footer>
+</v-app>
+
 </template>
 
 <script>
-import Goals from "./components/Goals.vue";
+import Nav from "./components/Nav.vue";
 import Graph from "./components/Graph.vue";
 import Skills from "./components/Skills.vue";
 
 export default {
   name: "app",
   components: {
-    Goals,
+    Nav,
     Graph,
     Skills
   }
@@ -37,22 +36,4 @@ export default {
 </script>
 
 <style>
-@import url("https://fonts.googleapis.com/css?family=Montserrat:400,700");
-
-body {
-  background-color: #eeeeee;
-  font-family: "Montserrat", sans-serif;
-  display: grid;
-  grid-template-rows: auto;
-  justify-items: center;
-  align-items: center;
-}
-body,
-html {
-  margin: 0;
-  height: 100%;
-}
-#app {
-  width: 50%;
-}
 </style>
