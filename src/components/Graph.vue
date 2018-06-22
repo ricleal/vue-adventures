@@ -6,10 +6,12 @@
                 <div>
                     <h3 class="headline mb-0">Graph</h3>
                     <div>{{message}}</div>
-                    <div>{{arange}}</div>
+                    <div>X: {{x}}</div>
+                    <div>Y: {{y}}</div>
                 </div>
             </v-card-title>
             <v-card-actions>
+
             </v-card-actions>
         </v-card>
     </v-flex>
@@ -26,13 +28,18 @@ export default {
     data() {
         return {
             message: "This is a graph",
-            arange: []
+            x: [],
+            y: []
         }
     },
     created() {
-        EventBus.$on('arange', arange => {
-            console.log(arange);
-            this.arange = arange;
+        EventBus.$on('tools-x', val => {
+            //console.log(val);
+            this.x = val;
+        });
+        EventBus.$on('tools-y', val => {
+            //console.log(val);
+            this.y = val;
         });
     }
 }

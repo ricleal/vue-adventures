@@ -26,7 +26,12 @@
         </v-layout>
         <v-layout row>
             <v-flex xs8>
-                <v-btn v-on:click="sendToAnotherComponent" color="info">Send to another component</v-btn>
+                <v-btn v-on:click="calculateY" color="info">Calulate Y</v-btn>
+            </v-flex>
+        </v-layout>
+				<v-layout row>
+            <v-flex xs8>
+                <v-text-field name="y" label="y" v-model.number="y" disabled></v-text-field>
             </v-flex>
         </v-layout>
     </v-container>
@@ -38,7 +43,8 @@
                     <v-card-title primary-title>
                         <div>
                             <h3 class="headline mb-0">ARange</h3>
-														<div>  {{arange}}</div> 
+														<div>X:  {{arange}}</div> 
+														<div>Y:  {{y}}</div> 
                         </div>
                     </v-card-title>
                 </v-card>
@@ -58,14 +64,16 @@ export default {
         valid: false,
         from: 1,
         to: 100,
-        steps: 100
+				steps: 100,
+				y: null
 		}),
 		methods: {
-			sendToAnotherComponent: function (event) {
+			calculateY: function (event) {
 				if (event) {
 					console.log(event);
 				}
-
+				this.y = this.arange.map(x => x * 2);
+				EventBus.$emit('tools-y', this.y);
 			}
 		},
     computed: {
@@ -78,7 +86,7 @@ export default {
                     result.push(parseFloat(i.toFixed(2)));
                 }
 								//console.log(result);
-								EventBus.$emit('arange', result);
+								EventBus.$emit('tools-x', result);
                 return result;
             }
         }
