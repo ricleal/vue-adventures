@@ -5,7 +5,6 @@
         <v-layout row>
             <v-flex xs8>
                 <v-text-field id="from" name="from" label="From" v-model.number="from">
-
                 </v-text-field>
             </v-flex>
         </v-layout>
@@ -26,13 +25,12 @@
         </v-layout>
         <v-layout row>
             <v-flex xs8>
-                <v-text-field id="equation" name="equation" label="Equation" :rules="[rules.required, rules.equation]"
-                 v-model.number="equation"></v-text-field>
+                <v-text-field id="equation" name="equation" label="Equation" :rules="[rules.required, rules.equation]" v-model.number="equation"></v-text-field>
             </v-flex>
         </v-layout>
         <v-layout row>
             <v-flex xs8>
-                <v-btn v-on:click="calculateY" :disabled="this.equation === null" color="info">Calulate Y</v-btn>
+                <v-btn v-on:click="calculateY" :disabled="this.equation === ''" color="info">Calulate Y</v-btn>
             </v-flex>
         </v-layout>
         <v-layout row>
@@ -46,7 +44,6 @@
 </template>
 
 <script>
-
 const math = require('mathjs')
 
 import {
@@ -61,23 +58,23 @@ export default {
         to: 100,
         steps: 100,
         y: null,
-        equation: null,
+        equation: '',
         rules: {
-          required: (value) => !!value || 'Required.',
-          equation: (value) => {
-            return  value.includes('x') || 'You must include x'
-          }
+            required: (value) => !!value || 'Required.',
+            equation: (value) => {
+                return value.includes('x') || 'You must include x'
+            }
         }
     }),
     methods: {
         calculateY: function (event) {
-          console.log(event);
-          let scope = {
-            x: this.arange
-          }
-          this.y = math.eval(this.equation, scope);
+            console.log(event);
+            let scope = {
+                x: this.arange
+            }
+            this.y = math.eval(this.equation, scope);
 
-          EventBus.$emit('tools-y', this.y);
+            EventBus.$emit('tools-y', this.y);
         }
     },
     computed: {

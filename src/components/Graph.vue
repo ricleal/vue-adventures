@@ -6,8 +6,9 @@
                 <div>
                     <h3 class="headline mb-0">Graph</h3>
                     <div>{{message}}</div>
-                    <div>X: {{x}}</div>
-                    <div>Y: {{y}}</div>
+                    <!-- <div>X: {{x}}</div> -->
+                    <!-- <div>Y: {{y}}</div> -->
+                    <div>data: {{data}}</div>
                 </div>
             </v-card-title>
             <v-card-actions>
@@ -41,6 +42,15 @@ export default {
             //console.log(val);
             this.y = val;
         });
+    },
+    computed: {
+        data: function(){
+            if (this.x.length > 0 && this.y.length > 0){
+                return this.x.map( (v, i) => ( 
+                    { x: v, y: this.y[i]}) );
+                
+            }
+        }
     }
 }
 </script>
