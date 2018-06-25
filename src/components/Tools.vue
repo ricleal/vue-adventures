@@ -3,18 +3,14 @@
 
     <v-container grid-list-md>
         <v-layout row>
-            <v-flex xs8>
+            <v-flex xs4>
                 <v-text-field id="from" name="from" label="From" v-model.number="from">
                 </v-text-field>
             </v-flex>
-        </v-layout>
-        <v-layout row>
-            <v-flex xs8>
+            <v-flex xs4>
                 <v-text-field id="to" name="to" label="To" v-model.number="to"></v-text-field>
             </v-flex>
-        </v-layout>
-        <v-layout row>
-            <v-flex xs8>
+            <v-flex xs4>
                 <v-text-field id="steps" name="steps" label="Steps" v-model.number="steps"></v-text-field>
             </v-flex>
         </v-layout>
@@ -25,7 +21,10 @@
         </v-layout>
         <v-layout row>
             <v-flex xs8>
-                <v-text-field id="equation" name="equation" label="Equation" :rules="[rules.required, rules.equation]" v-model.number="equation"></v-text-field>
+                <v-text-field id="equation" name="equation" label="Equation" 
+                :rules="[rules.required, rules.equation]" 
+                @keyup="calculateY"
+                v-model.number="equation"></v-text-field>
             </v-flex>
         </v-layout>
         <v-layout row>
@@ -56,7 +55,7 @@ export default {
         valid: false,
         from: 1,
         to: 100,
-        steps: 100,
+        steps: 99,
         y: null,
         equation: '',
         rules: {
@@ -67,13 +66,13 @@ export default {
         }
     }),
     methods: {
-        calculateY: function (event) {
-            console.log(event);
+        calculateY: function () {
             let scope = {
+                // x: math.matrix(this.arange)
                 x: this.arange
             }
             this.y = math.eval(this.equation, scope);
-
+            // DenseMatrix to Array: this.y.toArray
             EventBus.$emit('tools-y', this.y);
         }
     },

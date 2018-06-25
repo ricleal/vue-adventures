@@ -9,10 +9,12 @@
   },
   "dependencies": {
     "css-loader": "^0.28.11",
+    "d3": "^5.5.0",
     "material-design-icons-iconfont": "^3.0.3",
     "mathjs": "^5.0.0",
     "npm": "^6.1.0",
     "vue": "^2.5.16",
+    "vue-cli": "^2.9.6",
     "vuetify": "^1.0.19"
   },
   "devDependencies": {
