@@ -2,34 +2,34 @@
 <v-form v-model="valid">
 
     <v-container grid-list-md>
-        <v-layout row>
-            <v-flex xs4>
+        <v-layout row wrap align-center>
+            <v-flex xs1>
                 <v-text-field id="from" name="from" label="From" v-model.number="from">
                 </v-text-field>
             </v-flex>
-            <v-flex xs4>
+            <v-flex xs1>
                 <v-text-field id="to" name="to" label="To" v-model.number="to"></v-text-field>
             </v-flex>
-            <v-flex xs4>
+            <v-flex xs1>
                 <v-text-field id="steps" name="steps" label="Steps" v-model.number="steps"></v-text-field>
-            </v-flex>
-        </v-layout>
-        <v-layout row>
-            <v-flex xs8>
-                <v-text-field name="arange" label="X" v-model.number="arange" disabled></v-text-field>
             </v-flex>
         </v-layout>
         <v-layout row>
             <v-flex xs8>
                 <v-text-field id="equation" name="equation" label="Equation" 
                 :rules="[rules.required, rules.equation]" 
-                @keyup="calculateY"
+                @keyup.enter.native="calculateY"
                 v-model.number="equation"></v-text-field>
             </v-flex>
         </v-layout>
         <v-layout row>
             <v-flex xs8>
                 <v-btn v-on:click="calculateY" :disabled="this.equation === ''" color="info">Calulate Y</v-btn>
+            </v-flex>
+        </v-layout>
+        <v-layout row>
+            <v-flex xs8>
+                <v-text-field name="arange" label="X" v-model.number="arange" disabled></v-text-field>
             </v-flex>
         </v-layout>
         <v-layout row>

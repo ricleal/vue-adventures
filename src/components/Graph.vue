@@ -99,6 +99,7 @@ export default {
                 yAxis = d3.axisLeft(yRange)
                 .tickSize(1);
 
+
             vis.append("svg:g")
                 .attr("class", "x axis")
                 .attr("transform", "translate(0," + (height - margin.bottom) + ")")
