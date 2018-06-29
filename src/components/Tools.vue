@@ -46,7 +46,7 @@
 const math = require('mathjs')
 
 import {
-    EventBus
+    eventBus
 } from '../main.js';
 
 export default {
@@ -73,7 +73,7 @@ export default {
             }
             this.y = math.eval(this.equation, scope);
             // DenseMatrix to Array: this.y.toArray
-            EventBus.$emit('tools-y', this.y);
+            eventBus.$emit('tools-y', this.y);
         }
     },
     computed: {
@@ -86,7 +86,7 @@ export default {
                     result.push(parseFloat(i.toFixed(2)));
                 }
                 //console.log(result);
-                EventBus.$emit('tools-x', result);
+                eventBus.$emit('tools-x', result);
                 return result;
             }
         }

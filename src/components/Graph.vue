@@ -16,7 +16,7 @@
 
 <script>
 import {
-    EventBus
+    eventBus
 } from '../main.js';
 
 var d3 = require("d3");
@@ -31,11 +31,11 @@ export default {
         }
     },
     created() {
-        EventBus.$on('tools-x', val => {
+        eventBus.$on('tools-x', val => {
             //console.log(val);
             this.x = val;
         });
-        EventBus.$on('tools-y', val => {
+        eventBus.$on('tools-y', val => {
             //console.log(val);
             this.y = val;
         });
